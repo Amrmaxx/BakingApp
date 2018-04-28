@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground"
+    android:padding="@dimen/margin"
+    tools:context=".Activity.MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recipes_RV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator"
+        android:layout_width="@dimen/progress_bar"
+        android:layout_height="@dimen/progress_bar"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/error_cloud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/no_connection"
+            android:src="@drawable/ic_cloud_off" />
+
+        <TextView
+            android:id="@+id/error_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_connection"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

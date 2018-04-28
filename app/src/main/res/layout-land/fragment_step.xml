@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".Activity.StepActivity">
+
+    <TextView
+        android:id="@+id/short_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ScrollView
+        android:id="@+id/instruction_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/instruction_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <View
+        android:id="@+id/containerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/container_height"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/previous_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:contentDescription="@string/exo_controls_previous_description"
+        android:src="@drawable/ic_keyboard_arrow_left"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/previous_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/next_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/next_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:contentDescription="@string/exo_controls_next_description"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/total_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:visibility="gone" />
+
+</LinearLayout>

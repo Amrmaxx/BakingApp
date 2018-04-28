@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BakingApp</string>
+    <string name="no_connection">No Internet Connection Available\nPlease Check Your Internet</string>
+    <string name="BASE_RECIPES_URL_STRING">https://d17h27t6h515a5.cloudfront.net/topher/2017/May/59121517_baking/baking.json</string>
+
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+
+    <string name="action_favorite">Favorite</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="SHARED_PREF_KEY">com.app.android.bakingapp.sharedPrefKey</string>
+
+    <string name="previous">PREVIOUS</string>
+    <string name="next">NEXT</string>
+    <string name="add_widget">Add widget</string>
+    <string name="recipe_name">Recipe Name</string>
+
+    <string name="cake_widget">Cake widget image</string>
+    <string name="widget_background">Cake widget background image</string>
+    <string name="tasty_image">Tasty image looking face</string>
+    <string name="expand_icon">Icon to expand / hide ingredients</string>
+
+
+
+
+</resources>

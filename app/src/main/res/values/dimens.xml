@@ -1,0 +1,30 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+
+    <dimen name="progress_bar">42dp</dimen>
+    <dimen name="number_circle_diameter">36dp</dimen>
+    <dimen name="number_circle_radius">18dp</dimen>
+
+
+    <dimen name="title_elevation">6dp</dimen>
+    <dimen name="sub_title_elevation">4dp</dimen>
+    <dimen name="mini_elevation">2dp</dimen>
+
+    <dimen name="margin_zero">0dp</dimen>
+    <dimen name="margin_minimum">1dp</dimen>
+    <dimen name="margin_tiny">2dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_hugh">32dp</dimen>
+
+    <dimen name="container_height">38dp</dimen>
+
+    <dimen name="arrow_size">32dp</dimen>
+
+    <dimen name="tasty_dimen">32dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+</resources>

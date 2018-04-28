@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:orientation="vertical">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ingredients_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/title_elevation"
+        android:paddingBottom="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large">
+
+        <TextView
+            android:id="@+id/ingredients_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/ingredients"
+            android:textColor="@color/ingredientTextColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/expand_icon"
+            android:layout_width="@dimen/margin_hugh"
+            android:layout_height="@dimen/margin_hugh"
+            android:contentDescription="@string/expand_icon"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_arrow_drop_up"
+            app:layout_constraintBottom_toTopOf="@+id/ingredients_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredients_title" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/expand_icon"
+            app:layout_constraintStart_toStartOf="@+id/ingredients_title"
+            app:layout_constraintTop_toBottomOf="@+id/ingredients_title">
+
+            <TextView
+                android:id="@+id/ingredients_list_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:textColor="@color/ingredientTextColor"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="3 Cup of this \n4 TBLSN of that \n0.5 kg of @@@ @@ @@ @@ @@ @@ @@ @@ @@ @@ " />
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryBackground"
+            android:elevation="@dimen/sub_title_elevation"
+            android:padding="@dimen/margin_large"
+            android:text="@string/steps"
+            android:textColor="@color/ingredientTextColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/steps_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

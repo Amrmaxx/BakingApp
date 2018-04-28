@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".Activity.StepActivity">
+
+    <TextView
+        android:id="@+id/short_description_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground"
+        android:elevation="@dimen/sub_title_elevation"
+        android:padding="@dimen/margin_large"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Step Description" />
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/short_description_tv" />
+
+    <ScrollView
+        android:id="@+id/instruction_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_tiny"
+        android:background="@color/colorPrimaryBackground"
+        android:elevation="@dimen/mini_elevation"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintTop_toBottomOf="@+id/playerView">
+
+        <TextView
+            android:id="@+id/instruction_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_large"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            tools:text="Bake bake bake bake bake bake bake bake bake bake bake" />
+    </ScrollView>
+
+    <View
+        android:id="@+id/containerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/container_height"
+        android:background="@color/colorPrimaryBackground"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/previous_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:contentDescription="@string/exo_controls_previous_description"
+        android:paddingEnd="@dimen/margin_zero"
+        android:paddingStart="@dimen/margin"
+        android:src="@drawable/ic_keyboard_arrow_left"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerView" />
+
+    <TextView
+        android:id="@+id/previous_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:gravity="center"
+        android:padding="@dimen/margin"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:text="@string/previous"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintStart_toEndOf="@+id/previous_iv"
+        app:layout_constraintTop_toBottomOf="@+id/containerView" />
+
+    <TextView
+        android:id="@+id/next_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:gravity="center"
+        android:padding="@dimen/margin"
+        android:paddingEnd="@dimen/margin_hugh"
+        android:paddingStart="@dimen/margin_hugh"
+        android:text="@string/next"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintEnd_toStartOf="@+id/next_iv"
+        app:layout_constraintTop_toBottomOf="@+id/containerView" />
+
+    <ImageView
+        android:id="@+id/next_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:contentDescription="@string/exo_controls_next_description"
+        android:paddingEnd="@dimen/margin"
+        android:paddingStart="@dimen/margin_zero"
+        android:src="@drawable/ic_keyboard_arrow_right"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerView" />
+
+    <TextView
+        android:id="@+id/total_steps"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/container_height"
+        android:gravity="center"
+        android:padding="@dimen/margin"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/containerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerView"
+        tools:text="8/12" />
+
+</android.support.constraint.ConstraintLayout>
