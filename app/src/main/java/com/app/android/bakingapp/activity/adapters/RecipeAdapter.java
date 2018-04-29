@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.android.bakingapp.model.Recipe;
 import com.app.android.bakingapp.R;
+import com.app.android.bakingapp.model.Recipe;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,11 +52,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
             implements View.OnClickListener {
 
         TextView recipeTV;
+        ImageView recipeImage;
 
         public RecipeAdapterViewHolder(View itemView) {
             super(itemView);
 
             recipeTV = itemView.findViewById(R.id.recipe_tv);
+            recipeImage = itemView.findViewById(R.id.recipe_iv);
 
             itemView.setOnClickListener(this);
         }
@@ -62,6 +66,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
         void bind(int index) {
             String name = mRecipes.get(index).getRecipeName();
             recipeTV.setText(name);
+
+            // Loading Recipe Url if exists
+            if (mRecipes.get(index).getRecipeImage().isEmpty()) {
+                recipeImage.setVisibility(View.GONE);
+            } else {
+                recipeImage.setVisibility(View.VISIBLE);
+                Picasso.with(mContext).load(mRecipes.get(index).getRecipeImage()).into(recipeImage);
+            }
+
         }
 
         @Override

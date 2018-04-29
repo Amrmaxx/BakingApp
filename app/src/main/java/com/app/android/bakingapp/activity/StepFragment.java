@@ -28,6 +28,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -73,6 +74,8 @@ public class StepFragment extends Fragment {
     ImageView mExoPrevious;
     @BindView(R.id.exo_next_btn)
     ImageView mExoNext;
+    @BindView(R.id.thumbnail_image_view)
+    ImageView mThumbnail;
 
 
     // Empty Constructor
@@ -110,8 +113,14 @@ public class StepFragment extends Fragment {
     // Method to create UI
     private void populateUI() {
 
-        // Setting video artwork to loading
-        mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource(getResources(), R.drawable.loading_vid));
+        if (mSteps.get(mStepID).getStepThumbnailURL().isEmpty()) {
+            // Setting video artwork to loading if no thumbnail available
+            mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource(getResources(), R.drawable.loading_vid));
+            mThumbnail.setVisibility(View.GONE);
+        } else {
+            Picasso.with(getContext()).load(mSteps.get(mStepID).getStepThumbnailURL()).into(mThumbnail);
+            mPlayerView.setVisibility(View.INVISIBLE);
+        }
 
         // getting value to populate UI
         String shortDescription = mSteps.get(mStepID).getStepShortDescription();
@@ -176,8 +185,10 @@ public class StepFragment extends Fragment {
         MediaSource mediaSource = new ExtractorMediaSource(Uri.parse(mVideoURL), new DefaultDataSourceFactory(
                 getActivity(), userAgent), new DefaultExtractorsFactory(), null, null);
 
+        mThumbnail.setVisibility(View.GONE);
+        mPlayerView.setVisibility(View.VISIBLE);
         // if no video show "video unavailable screen
-        if (mVideoURL.equals("")) {
+        if (mVideoURL.isEmpty()) {
             mPlayerView.setDefaultArtwork(BitmapFactory.decodeResource
                     (getResources(), R.drawable.no_vid));
         }
