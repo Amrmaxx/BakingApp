@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Widget;
+package com.app.android.bakingapp.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import com.app.android.bakingapp.Model.Recipe;
+import com.app.android.bakingapp.model.Recipe;
 import com.app.android.bakingapp.R;
 
 public class ListWidgetAdapter extends RemoteViewsService {

@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Activity;
+package com.app.android.bakingapp.activity;
 
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -12,14 +12,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
-import com.app.android.bakingapp.Widget.BakingWidgetProvider;
+import com.app.android.bakingapp.model.Recipe;
+import com.app.android.bakingapp.widget.BakingWidgetProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RecipeActivity extends AppCompatActivity implements RecipeFragment.OnStepClickListener {
+public class RecipeActivity extends AppCompatActivity implements com.app.android.bakingapp.activity.RecipeFragment.OnStepClickListener {
 
     private String mName;
     private String mIngredients;
@@ -155,7 +155,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeFragment.
             stepFragment = (StepFragment) getSupportFragmentManager().findFragmentById(R.id.step_fragment);
             stepFragment.navigateToStep(position);
         } else {    // if normal phone (Portrait) Start StepActivity
-            Intent intent = new Intent(this, StepActivity.class);
+            Intent intent = new Intent(this, com.app.android.bakingapp.activity.StepActivity.class);
             intent.putExtra(Recipe.RECIPE_STEPS, mStepsString);
             intent.putExtra(Recipe.Step.STEP_ID, position);
             intent.putExtra(Recipe.RECIPE_NAME, mName);

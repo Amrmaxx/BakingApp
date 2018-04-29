@@ -1,14 +1,15 @@
-package com.app.android.bakingapp.Activity.Adapters;
+package com.app.android.bakingapp.activity.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
+import com.app.android.bakingapp.model.Recipe;
 
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepAdapterVie
 
         TextView stepId;
         TextView stepDescription;
+        ImageView videoIcon;
 
 
         public StepAdapterViewHolder(View itemView) {
@@ -58,6 +60,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepAdapterVie
 
             stepId = itemView.findViewById(R.id.step_id);
             stepDescription = itemView.findViewById(R.id.step_description);
+            videoIcon = itemView.findViewById(R.id.video_icon);
 
             itemView.setOnClickListener(this);
         }
@@ -68,6 +71,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepAdapterVie
             String name = mSteps.get(index).getStepShortDescription();
             stepId.setText(idString);
             stepDescription.setText(name);
+
+            // showing / hiding video Icon if step has / has not video guide
+            if (mSteps.get(index).getStepVideoURL().equals("")) {
+                videoIcon.setVisibility(View.INVISIBLE);
+            } else {
+                videoIcon.setVisibility(View.VISIBLE);
+            }
+
         }
 
         @Override

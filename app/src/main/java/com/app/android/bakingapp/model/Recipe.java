@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Model;
+package com.app.android.bakingapp.model;
 
 public class Recipe {
 

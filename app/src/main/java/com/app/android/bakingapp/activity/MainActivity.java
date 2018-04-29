@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Activity;
+package com.app.android.bakingapp.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -20,10 +20,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.app.android.bakingapp.Activity.Adapters.RecipeAdapter;
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
-import com.app.android.bakingapp.Utilities.JsonUtils;
+import com.app.android.bakingapp.activity.adapters.RecipeAdapter;
+import com.app.android.bakingapp.model.Recipe;
+import com.app.android.bakingapp.utilities.JsonUtils;
 
 import java.util.List;
 
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
     @Override
     public void onRecipeClick(int index) {
         Recipe recipe = mRecipes.get(index);
-        Intent intent = new Intent(this, RecipeActivity.class);
+        Intent intent = new Intent(this, com.app.android.bakingapp.activity.RecipeActivity.class);
         intent.putExtra(Recipe.RECIPE_NAME, recipe.getRecipeName());
         intent.putExtra(Recipe.RECIPE_INGREDIENTS_STRING, recipe.getRecipeIngredientsString());
         intent.putExtra(Recipe.RECIPE_STEPS, recipe.getRecipeStepsString());

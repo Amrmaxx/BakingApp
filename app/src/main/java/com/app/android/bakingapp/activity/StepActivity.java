@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Activity;
+package com.app.android.bakingapp.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

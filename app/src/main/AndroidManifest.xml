@@ -12,7 +12,7 @@
 
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,22 +20,22 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Activity.MainActivity$ConnectionBroadcastReceiver">
+        <receiver android:name=".activity.MainActivity$ConnectionBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
         <activity
-            android:name=".Activity.RecipeActivity"
+            android:name=".activity.RecipeActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".Activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".Activity.StepActivity"
+            android:name=".activity.StepActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".Activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity" />
 
-        <receiver android:name=".Widget.BakingWidgetProvider">
+        <receiver android:name=".widget.BakingWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -45,7 +45,7 @@
                 android:resource="@xml/baking_widget_provider_info" />
         </receiver>
 
-        <service android:name=".Widget.ListWidgetAdapter"
+        <service android:name=".widget.ListWidgetAdapter"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 

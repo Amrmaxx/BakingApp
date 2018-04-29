@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBackground"
     android:padding="@dimen/margin"
-    tools:context=".Activity.MainActivity">
+    tools:context=".activity.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recipes_RV"

@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Activity;
+package com.app.android.bakingapp.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
-import com.app.android.bakingapp.Utilities.JsonUtils;
+import com.app.android.bakingapp.model.Recipe;
+import com.app.android.bakingapp.utilities.JsonUtils;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
@@ -37,11 +37,13 @@ import butterknife.OnClick;
 
 public class StepFragment extends Fragment {
 
-    private static final String TAG = StepActivity.class.getSimpleName();
+    private static final String TAG = com.app.android.bakingapp.activity.StepActivity.class.getSimpleName();
     private static final String RECIPE_NAME = "recipe_name";
     private static final String PLAYER_POSITION = "player_position";
     private static final String CURRENT_STEP = "current_step";
     private static final String STEPS_STRING = "steps_string";
+    private static final String PLAY_WHEN_READY = "play_when_ready";
+    private boolean playWhenReady;
     private long seekPosition = 0;
     private List<Recipe.Step> mSteps;
     private SimpleExoPlayer mExoPlayer;
@@ -90,11 +92,13 @@ public class StepFragment extends Fragment {
             mStepID = savedInstanceState.getInt(CURRENT_STEP);
             mStepsString = savedInstanceState.getString(STEPS_STRING);
             mName = savedInstanceState.getString(RECIPE_NAME);
+            playWhenReady = savedInstanceState.getBoolean(PLAY_WHEN_READY);
         } else {
             Intent intent = getActivity().getIntent();
             mStepID = intent.getIntExtra(Recipe.Step.STEP_ID, 0);
             mStepsString = intent.getStringExtra(Recipe.RECIPE_STEPS);
             mName = intent.getStringExtra(Recipe.RECIPE_NAME);
+            playWhenReady = true; // to start playing if not in saved instance state
         }
         // parsing steps string
         mSteps = JsonUtils.parseSteps(mStepsString);
@@ -125,18 +129,18 @@ public class StepFragment extends Fragment {
         initializeMediaSession();
         initializePlayer();
 
-        // If exo player was playing it will seek to te position, if not it wil seek to initial value of 0
-        mExoPlayer.seekTo(seekPosition);
     }
 
     // Saving current state
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        long currentPosition = mExoPlayer.getCurrentPosition();
-        outState.putLong(PLAYER_POSITION, currentPosition);
+        seekPosition = mExoPlayer.getCurrentPosition();
+        outState.putLong(PLAYER_POSITION, seekPosition);
         outState.putInt(CURRENT_STEP, mStepID);
         outState.putString(STEPS_STRING, mStepsString);
         outState.putString(RECIPE_NAME, mName);
+        playWhenReady = mExoPlayer.getPlayWhenReady();
+        outState.putBoolean(PLAY_WHEN_READY, playWhenReady);
         super.onSaveInstanceState(outState);
     }
 
@@ -178,8 +182,11 @@ public class StepFragment extends Fragment {
                     (getResources(), R.drawable.no_vid));
         }
         mExoPlayer.prepare(mediaSource);
-        // play when media is available
-        mExoPlayer.setPlayWhenReady(true);
+        // play when media is available at start if no saveInstanceState value existed
+        mExoPlayer.setPlayWhenReady(playWhenReady);
+
+        // If exo player was playing it will seek to te position, if not it wil seek to initial value of 0
+        mExoPlayer.seekTo(seekPosition);
     }
 
     // Method to release media resources
@@ -190,10 +197,38 @@ public class StepFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (Util.SDK_INT > 23) {
+            initializePlayer();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if ((Util.SDK_INT <= 23 || mPlayerView == null)) {
+            initializePlayer();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (Util.SDK_INT <= 23) {
+            seekPosition = mExoPlayer.getCurrentPosition();
+            playWhenReady = mExoPlayer.getPlayWhenReady();
+            releaseMediaPlayer();
+        }
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
         mMediaSession.setActive(false);
-        releaseMediaPlayer();
+        if (Util.SDK_INT > 23) {
+            releaseMediaPlayer();
+        }
     }
 
     // Buttons Callbacks

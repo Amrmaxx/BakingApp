@@ -1,6 +1,6 @@
-package com.app.android.bakingapp.Utilities;
+package com.app.android.bakingapp.utilities;
 
-import com.app.android.bakingapp.Model.Recipe;
+import com.app.android.bakingapp.model.Recipe;
 
 import org.json.JSONArray;
 import org.json.JSONException;

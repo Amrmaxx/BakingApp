@@ -1,5 +1,6 @@
 package com.app.android.bakingapp;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
@@ -7,8 +8,8 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.app.android.bakingapp.Activity.RecipeActivity;
-import com.app.android.bakingapp.Model.Recipe;
+import com.app.android.bakingapp.activity.RecipeActivity;
+import com.app.android.bakingapp.model.Recipe;
 
 import org.junit.Rule;
 import org.junit.Test;

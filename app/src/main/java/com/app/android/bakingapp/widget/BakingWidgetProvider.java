@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Widget;
+package com.app.android.bakingapp.widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,10 +9,11 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.app.android.bakingapp.Activity.MainActivity;
-import com.app.android.bakingapp.Activity.RecipeActivity;
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
+import com.app.android.bakingapp.activity.MainActivity;
+import com.app.android.bakingapp.activity.RecipeActivity;
+import com.app.android.bakingapp.model.Recipe;
+
 
 public class BakingWidgetProvider extends AppWidgetProvider {
 

@@ -1,4 +1,4 @@
-package com.app.android.bakingapp.Activity;
+package com.app.android.bakingapp.activity;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.app.android.bakingapp.Activity.Adapters.StepAdapter;
-import com.app.android.bakingapp.Model.Recipe;
 import com.app.android.bakingapp.R;
-import com.app.android.bakingapp.Utilities.JsonUtils;
+import com.app.android.bakingapp.activity.adapters.StepAdapter;
+import com.app.android.bakingapp.model.Recipe;
+import com.app.android.bakingapp.utilities.JsonUtils;
 
 import java.util.List;
 
